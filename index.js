@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
-const customPlugin = require('./customPlugin')
+const addStyleElement = require('./addStyleElement')
+const moveAllFillToStyle = require('./moveAllFillToStyle')
 const { extendDefaultPlugins, optimize } = require('svgo')
 
 const plugins = extendDefaultPlugins([
@@ -16,7 +17,8 @@ const plugins = extendDefaultPlugins([
 		name: 'convertShapeToPath',
 		active: false
 	},
-	customPlugin
+	addStyleElement,
+	moveAllFillToStyle
 ])
 
 async function readFile(filePath, outPath) {
